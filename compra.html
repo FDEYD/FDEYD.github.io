@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/estilo.css">
+    <script src="js/popper.min.js"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css"
+        integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"><link rel="stylesheet" href="./css/style.css">
+
+    <link rel="stylesheet" href="css/sweetalert2.min.css">
+
+    <title>Carrito Compras en JavaScript</title>
+
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <div class="row justify-content-between mb-5">
+                
+                <nav class="navbar navbar-expand-md navbar-color fixed-top bg-secondary">
+                    <header class="main-header">
+                        <div class="container container--flex">
+                          <div class="main-header__container">
+                            <h1 class="main-header__title">PIXELS</h1>
+                            <span class="icon-menu" id="btn-menu"><i class="fas fa-bars"></i></span>
+                            <nav class="main-nav" id="main-nav">
+                              <ul class="menu">
+                                <li class="menu__item"><a href="index.html" class="menu__link">INICIO</a></li>
+                                <li class="menu__item"><a href="" class="menu__link">SOBRE</a></li>
+                                <li class="menu__item"><a href="" class="menu__link">CARACTERISTICAS</a></li>
+                                <li class="menu__item"><a href="" class="menu__link">TIENDA</a></li>
+                                <li class="menu__item"><a href="" class="menu__link">CONTACTOS</a></li>
+                              </ul>
+                            </nav>
+                          </div>
+                          <div class="main-header__container">
+                            <span class="main-header__txt">Necesitas ayuda</span>
+                            <p class="main-header__txt"><i class="fas fa-phone"></i> TELEFONO 54853434</p>
+                          </div>
+                          <div class="main-header__container">
+                            
+                            <a href="login.html" class="main-header__btn">INICIA <i class="fas fa-user"></i></a>
+                            <input type="search" class="main-header__input" placeholder="Buscar productos"><i class="fas fa-search"></i>
+                          </div>
+                        </div>
+                      
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
+                        aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <main>
+        <div class="container">
+            <div class="row mt-3">
+                <div class="col">
+                    <h2 class="d-flex justify-content-center mb-3">Realizar Compra</h2>
+                    <form id="procesar-pago" action="#" method="post">
+
+                        <div class="form-group row">
+                            <label for="cliente" class="col-12 col-md-2 col-form-label h2">Cliente :</label>
+                            <div class="col-12 col-md-10">
+                                <input type="text" class="form-control" id="cliente"
+                                    placeholder="Ingresa nombre cliente" name="destinatario">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="email" class="col-12 col-md-2 col-form-label h2">Correo :</label>
+                            <div class="col-12 col-md-10">
+                                <input type="text" class="form-control" id="correo" placeholder="Ingresa tu correo" name="cc_to">
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="cliente" class="col-12 col-md-2 col-form-label h2">Celular :</label>
+                            <div class="col-12 col-md-10">
+                                <input type="text" class="form-control" id="cliente"
+                                    placeholder="Ingresa su numero de celular" name="destinatario">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="email" class="col-12 col-md-2 col-form-label h2">Direccion :</label>
+                            <div class="col-12 col-md-10">
+                                <input type="text" class="form-control" id="correo" placeholder="Ingresa tu Direccion" name="cc_to">
+                            </div>
+                        </div>
+
+
+                        <div id="carrito" class="form-group table-responsive" >
+                            <table class="table" id="lista-compra" >
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Imagen</th>
+                                        <th scope="col">Nombre</th>
+                                        <th scope="col">Precio</th>
+                                        <th scope="col">Cantidad</th>
+                                        <th scope="col">Sub Total</th>
+                                        <th scope="col">Eliminar</th>
+                                    </tr>
+
+                                </thead>
+                                <tbody >
+
+                                </tbody>
+                                <tr>
+                                    <th colspan="4" scope="col" class="text-right">SUB TOTAL :</th>
+                                    <th scope="col">
+                                        <p id="subtotal"></p>
+                                    </th>
+                                    <!-- <th scope="col"></th> -->
+                                </tr>
+                                <tr>
+                                    <th colspan="4" scope="col" class="text-right">IVA :</th>
+                                    <th scope="col">
+                                        <p id="igv"></p>
+                                    </th>
+                                    <!-- <th scope="col"></th> -->
+                                </tr>
+                                <tr>
+                                    <th colspan="4" scope="col" class="text-right">TOTAL :</th>
+                                    <th scope="col">
+                                        <input id="total" name="monto" class="font-weight-bold border-0" readonly style="background-color: white;"></input>
+                                    </th>
+                                    <!-- <th scope="col"></th> -->
+                                </tr>
+
+                            </table>
+                        </div>
+
+                        <div class="row justify-content-center" id="loaders">
+                            <img id="cargando" src="" width="220">
+                        </div>
+
+                        <div class="row justify-content-between">
+                            <div class="col-md-4 mb-2">
+                                <a href="index.html" class="btn btn-info btn-block">Seguir comprando</a>
+                            </div>
+                            <div class="col-xs-12 col-md-4">
+                                <button href="#" class="btn btn-success btn-block" id="procesar-compra">Realizar compra</button>
+                            </div>
+                        </div>
+                    </form>
+
+
+                </div>
+
+
+            </div>
+
+        </div>
+    </main>
+
+
+
+
+
+    </div>
+
+    <script src="js/jquery-3.4.1.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/sweetalert2.min.js"></script>
+
+    <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/emailjs-com@2.3.2/dist/email.min.js"></script>
+
+    <script src="js/carrito.js"></script>
+    <script src="js/compra.js"></script>
+
+
+
+    <section class="container__testimonials">
+        <h2 class="section__title">NOVEDAD 2022</h2>
+        <h3 class="testimonial__title">LG OLED evo 48 </h3>
+        <p class="testimonial__txt">LG OLED evo 48'' C2 4K Smart TV con ThinQ AI (Inteligencia Artificial), 4K Procesador Inteligente α9 generación 5 (2022)</p>
+      </section>
+    
+      <div class="container-editor">
+        <div class="editor__item">
+          <img src="https://www.lg.com/pe/images/tvs/md07552941/gallery/medium01.jpg" alt="" class="editor__img">
+          <p class="editor__circle">Smart TV</p>
+        </div>
+        <div class="editor__item">
+          <img src="https://www.lg.com/pe/images/tvs/md07552941/gallery/medium02.jpg" alt="" class="editor__img">
+          <p class="editor__circle">Smart TV</p>
+        </div>
+      </div>
+      <section class="container-tips">
+        <div class="tip">
+          <i class="far fa-hand-paper"></i> 
+          <h2 class="tip__title">PANTALLA</h2>
+          <p class="tip__txt">Panel OLED: Auto-Iluminación de Píxeles</p>
+          <a href="" class="btn-shop">COMPRA AHORA</a>
+        </div>
+        <div class="tip">
+         <i class="fas fa-rocket"></i>
+          <h2 class="tip__title">PROCESADOR</h2>
+          <p class="tip__txt">4K Procesador Inteligente A9 generación 5, 4K Cinema HDR con Dolby Vision IQ, LG ThinQ AI: Inteligencia Artificial</p>
+          <a href="" class="btn-shop">COMPRA AHORA</a>
+        </div>
+        <div class="tip">
+          <i class="fas fa-cog"></i>
+          <h2 class="tip__title">SONIDO</h2>
+          <p class="tip__txt">Sonido Dolby Atmos</p>
+          <a href="" class="btn-shop">COMPRA AHORA</a>
+        </div>
+      </section>
+    </div>
+  </main>
+  <footer class="main-footer">
+    <div class="footer__section">
+      <h2 class="footer__title">Sobre nosotros</h2>
+      <p class="footer__txt">No es Brujeria, Es tecnologia</p>
+    </div>
+    <div class="footer__section">
+      <h2 class="footer__title">Hubicasion:</h2>
+      <p class="footer__txt">"Torres America Norte"
+        Av. America #839 esq Av. Pando locales 4, 6 y 7, Planta Baja
+        Telef  4245917</p>
+      <h2 class="footer__title">Contactos</h2>
+      <p class="footer__txt">telefono : 4556359 </p>
+      <p class="footer__txt">Email : info@example.com</p>
+    </div>
+    <div class="footer__section">
+      <h2 class="footer__title">Categorías Principales</h2>
+      <a href="" class="footer__link">inicio</a>
+      <a href="" class="footer__link">telefonia</a>
+      <a href="" class="footer__link">audio</a>
+      <a href="" class="footer__link">computo</a>
+      <a href="" class="footer__link">televisores Smart</a>
+    </div>
+    <div class="footer__section">
+      <h2 class="footer__title">Suscríbete a tus ofertas</h2>
+      <p class="footer__txt">Al suscribirse a nuestra lista de correo, siempre recibirá nuestras últimas noticias y actualizaciones.</p>
+      <input type="email" class="footer__input" placeholder="Enter your email">
+    </div>
+    <p class="copy">© 2022 Smart TV. Todos los derechos reservados | Diseño por mi </p>
+  </footer>
+<!-- partial -->
+<script  src="./script.js"></script>
+
+
+
+
+
+
+</body>
+
+</html>
